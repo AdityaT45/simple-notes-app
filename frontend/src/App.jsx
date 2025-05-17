@@ -9,22 +9,23 @@ const App = () => {
     fetchNotes();
   }, []);
 
-  const fetchNotes = async () => {
-    const res = await axios.get('http://localhost:5000/api/notes');
-    setNotes(res.data);
-  };
+ const fetchNotes = async () => {
+  const res = await axios.get('https://simple-notes-backend.onrender.com/api/notes');
+  setNotes(res.data);
+};
 
-  const addNote = async (e) => {
-    e.preventDefault();
-    await axios.post('http://localhost:5000/api/notes', form);
-    setForm({ title: '', content: '' });
-    fetchNotes();
-  };
+const addNote = async (e) => {
+  e.preventDefault();
+  await axios.post('https://simple-notes-backend.onrender.com/api/notes', form);
+  setForm({ title: '', content: '' });
+  fetchNotes();
+};
 
-  const deleteNote = async (id) => {
-    await axios.delete(`http://localhost:5000/api/notes/${id}`);
-    fetchNotes();
-  };
+const deleteNote = async (id) => {
+  await axios.delete(`https://simple-notes-backend.onrender.com/api/notes/${id}`);
+  fetchNotes();
+};
+
 
   return (
     <div style={{ padding: '2rem' }}>
