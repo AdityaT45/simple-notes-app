@@ -9,20 +9,22 @@ const App = () => {
     fetchNotes();
   }, []);
 
- const fetchNotes = async () => {
-  const res = await axios.get('https://simple-notes-backend.onrender.com/api/notes');
+ const BASE_URL = 'https://simple-notes-app-wz8n.onrender.com/api/notes';
+
+const fetchNotes = async () => {
+  const res = await axios.get(BASE_URL);
   setNotes(res.data);
 };
 
 const addNote = async (e) => {
   e.preventDefault();
-  await axios.post('https://simple-notes-backend.onrender.com/api/notes', form);
+  await axios.post(BASE_URL, form);
   setForm({ title: '', content: '' });
   fetchNotes();
 };
 
 const deleteNote = async (id) => {
-  await axios.delete(`https://simple-notes-backend.onrender.com/api/notes/${id}`);
+  await axios.delete(`${BASE_URL}/${id}`);
   fetchNotes();
 };
 
